@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+data.sqlite
+.env
+.git
+*.rar
+*.bat
+*.ps1
+*-player-script.js
+blocked_channels.json
+autoresponder.json

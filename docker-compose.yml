@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  discord-bot:
+    build: .
+    container_name: legend-main-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Mount database để giữ dữ liệu khi restart
+      - ./data.sqlite:/app/data.sqlite
+      # Mount blocked_channels để giữ cấu hình kênh bị chặn
+      - ./blocked_channels.json:/app/blocked_channels.json
+      # Mount autoresponder để giữ danh sách auto-reply
+      - ./autoresponder.json:/app/autoresponder.json
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
